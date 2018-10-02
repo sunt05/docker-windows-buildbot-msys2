@@ -1,6 +1,6 @@
 # escape=`
 
-ARG BASE_TAG=latest_1803
+ARG BASE_TAG=latest
 
 FROM mback2k/windows-buildbot-tools:${BASE_TAG}
 
