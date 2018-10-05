@@ -6,6 +6,8 @@ FROM python:${BASE_TAG}
 
 SHELL ["powershell", "-command"]
 
+RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
 ARG GIT_X64="https://github.com/git-for-windows/git/releases/download/v2.18.0.windows.1/Git-2.18.0-64-bit.exe"
 ADD ${GIT_X64} C:\Windows\Temp\Git-64-bit.exe
 
