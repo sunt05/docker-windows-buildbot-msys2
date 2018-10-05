@@ -47,4 +47,12 @@ RUN C:\msys64\usr\bin\bash.exe -l -c 'exit 0'; `
     C:\msys64\usr\bin\bash.exe -l -c 'pacman -S --needed --noconfirm --noprogressbar automake autoconf make intltool libtool zip unzip'; `
     C:\msys64\usr\bin\bash.exe -l -c 'echo "Successfully installed MinGW-w64"';
 
+
+# set make as visible from mingw-make
+RUN Copy-Item -Path C:\msys64\mingw64\bin\mingw32-make.exe -Destination C:\msys64\mingw64\bin\make.exe
+
+# set path for MinGW64 bin
+RUN $path = $env:path + ';c:\msys64\mingw64\bin'; Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $path
+
 CMD ["powershell"]
+
